@@ -2,12 +2,6 @@ pipeline {
     agent {label "ubuntu_slave"}
 
    stages {
-      stage('CLONE') {
-         steps {
-               git credentialsId: 'gitcreds', url: 'https://github.com/mostafahassan097/autom8able-mochajs-starter.git'
-         }
-      }
-
       stage('SonarQube Analysis') {
           
             environment {
