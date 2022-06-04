@@ -14,10 +14,11 @@ pipeline {
          steps {
              nodejs(nodeJSInstallationName: 'nodejs'){
 
-                def repositoryUrl = scm.userRemoteConfigs[0].getUrl()
-                def GIT_REPO_NAME = scm.userRemoteConfigs[0].getUrl().tokenize('/').last().split("\\.")[0]
-
-                 sh 'npm install'
+                    def repositoryUrl = scm.userRemoteConfigs[0].getUrl()
+                    def GIT_REPO_NAME = scm.userRemoteConfigs[0].getUrl().tokenize('/').last().split("\\.")[0]
+                    def SONAR_BRANCH_NAME = env.BRANCH_NAME
+                    
+                    sh 'npm install'
 
                  withSonarQubeEnv('sonar-server')
                  {
